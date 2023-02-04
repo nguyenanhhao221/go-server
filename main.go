@@ -32,7 +32,10 @@ func formHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "method is not accepted", http.StatusMethodNotAllowed)
 		return
 	}
-	fmt.Fprintf(w, "POST Request success")
+	address := r.FormValue("address")
+	name := r.FormValue("name")
+
+	fmt.Fprintf(w, "POST Request success, name is :%s , address is: %s", name, address)
 }
 
 func main() {
@@ -52,5 +55,4 @@ func main() {
 		// If there was an error starting the server, log the error and exit
 		log.Fatal(err)
 	}
-
 }
